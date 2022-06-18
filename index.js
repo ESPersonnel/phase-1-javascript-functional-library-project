@@ -55,7 +55,7 @@ function myReduce(collection, callback, acc) {
   return acc;
 }
 
-// 
+// Solution 4
 function myFind(collection, callback) {
   if (Array.isArray(collection)) {
     for (var i = 0; i < collection.length; i++) {
@@ -72,6 +72,7 @@ function myFind(collection, callback) {
   }
 }
 
+// Solution 5
 function myFilter(collection, callback) {
   var newArray = [];
   if (Array.isArray(collection)) {
@@ -90,6 +91,7 @@ function myFilter(collection, callback) {
   return newArray;
 }
 
+// Solution 6
 function mySize(collection) {
   if (Array.isArray(collection)) {
     return collection.length;
@@ -98,6 +100,7 @@ function mySize(collection) {
   }
 }
 
+// Solution 7
 function myFirst(collection, n) {
   if (Array.isArray(collection)) {
     if (n === undefined) {
@@ -118,6 +121,7 @@ function myFirst(collection, n) {
   }
 }
 
+// Solution 8
 function myLast(collection, n) {
     if (Array.isArray(collection)) {
         if (n === undefined) {
@@ -138,6 +142,7 @@ function myLast(collection, n) {
     }
 }
 
+// Solution 9
 function myKeys(collection) {
   var newArray = [];
   if (Array.isArray(collection)) {
@@ -152,6 +157,7 @@ function myKeys(collection) {
   return newArray;
 }
 
+// Solution 10
 function myValues(collection) {
   var newArray = [];
   if (Array.isArray(collection)) {
