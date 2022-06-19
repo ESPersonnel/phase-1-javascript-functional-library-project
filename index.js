@@ -1,14 +1,8 @@
 // Solution 1
 function myEach(collection, callback) {
-  if (Array.isArray(collection)) {
-    for (var i = 0; i < collection.length; i++) {
-      callback(collection[i]);
-    }
-  } else {
-    for (var key in collection) {
-      callback(collection[key]);
-    }
-  }
+  Object.values(collection).forEach(test => {
+    callback(test);
+  });
   return collection;
 }
 
@@ -28,32 +22,21 @@ function myMap(collection, callback) {
 }
 
 // Solution 3
-function myReduce(collection, callback, acc) {
-  if (Array.isArray(collection)) {
-    if (acc === undefined) {
-      acc = collection[0];
-      for (var i = 1; i < collection.length; i++) {
-        acc = callback(acc, collection[i]);
-      }
-    } else {
-      for (var i = 0; i < collection.length; i++) {
-        acc = callback(acc, collection[i]);
-      }
-    }
-  } else {
-    if (acc === undefined) {
-      acc = collection[Object.keys(collection)[0]];
-      for (var key in collection) {
-        acc = callback(acc, collection[key]);
-      }
-    } else {
-      for (var key in collection) {
-        acc = callback(acc, collection[key]);
-      }
-    }
+const myReduce = function (testArr, callback, acc) {
+  let objValues = Object.values(testArr);
+
+  if (!acc) {
+    acc = objValues[0];
+    objValues = objValues.slice(1);
+  }
+
+  const newArr = objValues.length;
+
+  for (let i = 0; i < newArr; i++) {
+    acc = callback(acc, objValues[i], objValues);
   }
   return acc;
-}
+};
 
 // Solution 4
 function myFind(collection, callback) {
@@ -73,23 +56,11 @@ function myFind(collection, callback) {
 }
 
 // Solution 5
-function myFilter(collection, callback) {
-  var newArray = [];
-  if (Array.isArray(collection)) {
-    for (var i = 0; i < collection.length; i++) {
-      if (callback(collection[i])) {
-        newArray.push(collection[i]);
-      }
-    }
-  } else {
-    for (var key in collection) {
-      if (callback(collection[key])) {
-        newArray.push(collection[key]);
-      }
-    }
-  }
-  return newArray;
+function myFilter(testArr, excluder) {
+  let objValues = Object.values(testArr)
+  return objValues.filter(num => num > 10)
 }
+
 
 // Solution 6
 function mySize(collection) {
