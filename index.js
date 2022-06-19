@@ -63,12 +63,10 @@ function myFilter(testArr, excluder) {
 
 
 // Solution 6
-function mySize(collection) {
-  if (Array.isArray(collection)) {
-    return collection.length;
-  } else {
-    return Object.keys(collection).length;
-  }
+function mySize(testArr){
+  let objValues = Object.values(testArr)
+  const newArr = new Set(objValues)
+  return newArr.size
 }
 
 // Solution 7
